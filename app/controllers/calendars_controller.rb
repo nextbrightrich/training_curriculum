@@ -32,10 +32,9 @@ class CalendarsController < ApplicationController
     7.times do |x|
       today_plans = []
       plan = plans.map do |plan|
-        today_plans.push(plan.plan) if plan.date == @todays_date
+        today_plans.push(plan.plan) if plan.date == @todays_date_x
       end
-      days = { month: => (@todays_date).month, date: (@todays_date).day, :plans => today_plans}
-      @week_days.push(days)
+      days = { month: (@todays_date + x).month, date: (@todays_date+x).day, plans: today_plans}
     end
 
   end
